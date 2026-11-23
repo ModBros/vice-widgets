@@ -1,0 +1,117 @@
+{
+  "name": "wanted",
+  "displayName": "Wanted Level",
+  "description": "The wanted stars of the HUD. The higher the value, the more stars light up, and a full wanted level flashes.",
+  "filename": "Wanted.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "description": "The metric that lights up the stars, e.g. the CPU temperature",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "stars",
+      "label": "Stars",
+      "description": "The number of stars",
+      "type": "slider",
+      "defaultValue": 5,
+      "min": 1,
+      "max": 10
+    },
+    {
+      "name": "min",
+      "label": "Min Value",
+      "description": "The value with no star lit. Defaults to 0",
+      "type": "number"
+    },
+    {
+      "name": "max",
+      "label": "Max Value",
+      "description": "The value with all stars lit. If not set, percentages and °C use 100 and other metrics their highest recorded value",
+      "type": "number"
+    },
+    {
+      "name": "align",
+      "label": "Alignment",
+      "description": "Where the stars sit in a widget wider than they are",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "defaultValue": "right"
+    },
+    {
+      "name": "no_flash",
+      "label": "No Flashing",
+      "description": "Keeps the stars from flashing when all of them are lit",
+      "type": "checkbox"
+    },
+    {
+      "name": "star_color",
+      "label": "Star Color",
+      "description": "The color of the lit stars. Defaults to white",
+      "type": "color"
+    },
+    {
+      "name": "empty_color",
+      "label": "Empty Color",
+      "description": "The color of the unlit stars",
+      "type": "color"
+    }
+  ],
+  "layout": [
+    "metric",
+    "stars",
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "column",
+          "children": ["min"]
+        },
+        {
+          "type": "column",
+          "children": ["max"]
+        }
+      ]
+    },
+    "align",
+    "no_flash",
+    {
+      "type": "fieldset",
+      "label": "Colors",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "children": ["star_color"]
+            },
+            {
+              "type": "column",
+              "children": ["empty_color"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

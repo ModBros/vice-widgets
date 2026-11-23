@@ -1,0 +1,129 @@
+{
+  "name": "money",
+  "displayName": "Cash",
+  "description": "The cash counter of the HUD: a metric as a dollar amount that counts up and down to every new value, with the last change fading out below it.",
+  "filename": "Money.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "description": "The metric shown as cash, e.g. the used memory in MB",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Currency"]
+      }
+    },
+    {
+      "name": "multiplier",
+      "label": "Multiplier",
+      "description": "Multiplies the value before it is shown, to make small values look like real money",
+      "type": "number",
+      "defaultValue": 1
+    },
+    {
+      "name": "precision",
+      "label": "Decimals",
+      "description": "The number of decimal places",
+      "type": "slider",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 6
+    },
+    {
+      "name": "prefix",
+      "label": "Currency Sign",
+      "description": "The text in front of the amount",
+      "type": "string",
+      "defaultValue": "$"
+    },
+    {
+      "name": "hide_change",
+      "label": "Hide Change",
+      "description": "Hides the change of the last update below the amount",
+      "type": "checkbox"
+    },
+    {
+      "name": "align",
+      "label": "Alignment",
+      "description": "Where the amount sits in the widget",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "defaultValue": "right"
+    },
+    {
+      "name": "font",
+      "label": "Font",
+      "description": "The font of the amount. Defaults to Pricedown if it is installed, Impact otherwise",
+      "type": "font"
+    },
+    {
+      "name": "font_size",
+      "label": "Font Size",
+      "description": "The font size in pixels. If not set, it follows the size of the widget",
+      "type": "number",
+      "min": 1
+    },
+    {
+      "name": "color",
+      "label": "Color",
+      "description": "The color of the amount. Defaults to cash green",
+      "type": "color"
+    }
+  ],
+  "layout": [
+    "metric",
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "column",
+          "children": ["multiplier"]
+        },
+        {
+          "type": "column",
+          "children": ["prefix"]
+        }
+      ]
+    },
+    "precision",
+    "hide_change",
+    "align",
+    {
+      "type": "fieldset",
+      "label": "Text",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["font"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["font_size"]
+            }
+          ]
+        },
+        "color"
+      ]
+    }
+  ]
+}

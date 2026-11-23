@@ -1,0 +1,4 @@
+{
+  "extends": "@modbros/widget-pack-tooling/tsconfig.json",
+  "include": ["src"]
+}

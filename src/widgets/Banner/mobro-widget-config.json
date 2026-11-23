@@ -1,0 +1,113 @@
+{
+  "name": "banner",
+  "displayName": "Mission Banner",
+  "description": "A big title on a dark band like the mission passed screen, with an optional subtitle and metric value. Above the alert threshold of the metric the title turns into a red alert like Wasted. Also works as a plain heading.",
+  "filename": "Banner.tsx",
+  "config": [
+    {
+      "name": "title",
+      "label": "Title",
+      "description": "The big text",
+      "type": "string",
+      "defaultValue": "Mission Passed"
+    },
+    {
+      "name": "subtitle",
+      "label": "Subtitle",
+      "description": "The small text below the title, followed by the value of the metric",
+      "type": "string"
+    },
+    {
+      "name": "metric",
+      "label": "Metric",
+      "description": "An optional metric whose value follows the subtitle and that switches the title to the alert title above the threshold",
+      "type": "metric"
+    },
+    {
+      "name": "alert_threshold",
+      "label": "Threshold (%)",
+      "description": "Percentage of the max value of the metric from which the alert title is shown. 0 turns it off. Only percentages, °C and metrics with a known max value raise the alert",
+      "type": "slider",
+      "defaultValue": 90,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "name": "alert_title",
+      "label": "Alert Title",
+      "description": "The title shown above the threshold",
+      "type": "string",
+      "defaultValue": "Wasted"
+    },
+    {
+      "name": "hide_band",
+      "label": "Hide Band",
+      "description": "Hides the dark band behind the texts",
+      "type": "checkbox"
+    },
+    {
+      "name": "font",
+      "label": "Font",
+      "description": "The font of the title. Defaults to Pricedown if it is installed, Impact otherwise",
+      "type": "font"
+    },
+    {
+      "name": "title_color",
+      "label": "Title",
+      "description": "The color of the title. Defaults to gold",
+      "type": "color"
+    },
+    {
+      "name": "text_color",
+      "label": "Subtitle",
+      "description": "The color of the subtitle. Defaults to white",
+      "type": "color"
+    },
+    {
+      "name": "alert_color",
+      "label": "Alert",
+      "description": "The color of the alert title. Defaults to red",
+      "type": "color"
+    }
+  ],
+  "layout": [
+    "title",
+    "subtitle",
+    {
+      "type": "fieldset",
+      "label": "Metric & Alert",
+      "collapsible": true,
+      "children": ["metric", "alert_threshold", "alert_title"]
+    },
+    {
+      "type": "fieldset",
+      "label": "Style",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        "hide_band",
+        "font",
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["title_color"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["text_color"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["alert_color"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

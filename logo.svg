@@ -1,0 +1,12 @@
+<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="46" gradientUnits="userSpaceOnUse"><stop stop-color="#2A0D4A"/><stop offset="0.55" stop-color="#FF3D7F"/><stop offset="1" stop-color="#FFB35C"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="10" x2="0" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF1A8"/><stop offset="1" stop-color="#FF2E88"/></linearGradient>
+</defs>
+<rect width="46" height="46" rx="6" fill="url(#sky)"/>
+<circle cx="23" cy="24" r="12" fill="url(#sun)"/>
+<rect x="6" y="23" width="34" height="1.2" fill="#7A1F6E"/><rect x="6" y="27" width="34" height="1.8" fill="#7A1F6E"/>
+<rect y="32" width="46" height="14" rx="0" fill="#1A0726"/>
+<path d="M9 46C9 38 10.5 30 14 25M14 25C10 22.5 6.5 23.5 4 26M14 25C16.5 21.5 20 21.5 22.5 23M14 25C13 21.5 10.5 19.5 7 19.5M14 25C17 24 19.5 25.5 21 28" stroke="#1A0726" stroke-width="2.2" stroke-linecap="round"/>
+<text x="31" y="42" text-anchor="middle" font-family="Impact, sans-serif" font-size="9" fill="#22E4D9">VICE</text>
+</svg>

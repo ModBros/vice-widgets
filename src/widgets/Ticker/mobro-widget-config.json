@@ -1,0 +1,150 @@
+{
+  "name": "ticker",
+  "displayName": "Stock Ticker",
+  "description": "A card of the in-game stock market: a symbol, the current value, the change over the visible history in green or red and a sparkline of it.",
+  "filename": "Ticker.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "description": "The metric traded on the card",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "label",
+      "label": "Symbol",
+      "description": "The name on the card, e.g. CPU. Defaults to the metric name",
+      "type": "string"
+    },
+    {
+      "name": "samples",
+      "label": "History",
+      "description": "The number of values in the sparkline. The change is measured from the first of them",
+      "type": "slider",
+      "defaultValue": 60,
+      "min": 10,
+      "max": 300
+    },
+    {
+      "name": "precision",
+      "label": "Precision",
+      "description": "The number of decimal places. If not set, values of 100 and more have none, smaller values one or two",
+      "type": "number",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "hide_unit",
+      "label": "Hide Unit",
+      "description": "Shows the value without its unit",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_panel",
+      "label": "Hide Panel",
+      "description": "Hides the background of the card",
+      "type": "checkbox"
+    },
+    {
+      "name": "panel_color",
+      "label": "Panel Color",
+      "description": "The background of the card",
+      "type": "color",
+      "hideIf": {
+        "field": "hide_panel"
+      }
+    },
+    {
+      "name": "up_color",
+      "label": "Rising",
+      "description": "The color of a rising value. Defaults to green",
+      "type": "color"
+    },
+    {
+      "name": "down_color",
+      "label": "Falling",
+      "description": "The color of a falling value. Defaults to red",
+      "type": "color"
+    },
+    {
+      "name": "font",
+      "label": "Font",
+      "description": "The font of the texts. Defaults to Bahnschrift, which ships with Windows",
+      "type": "font"
+    },
+    {
+      "name": "font_size",
+      "label": "Font Size",
+      "description": "The font size of the symbol in pixels, the value is twice as large. If not set, it follows the height of the widget",
+      "type": "number",
+      "min": 1
+    }
+  ],
+  "layout": [
+    "metric",
+    "label",
+    "samples",
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "column",
+          "children": ["precision"]
+        },
+        {
+          "type": "column",
+          "children": ["hide_unit"]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "label": "Colors",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        "hide_panel",
+        "panel_color",
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "children": ["up_color"]
+            },
+            {
+              "type": "column",
+              "children": ["down_color"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "label": "Text",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["font"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["font_size"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

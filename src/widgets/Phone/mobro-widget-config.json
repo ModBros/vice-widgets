@@ -1,0 +1,364 @@
+{
+  "name": "phone",
+  "displayName": "Phone",
+  "description": "A smartphone with a sunset wallpaper, a clock, the date and up to four apps that each run an action when tapped, e.g. open a website or lock the PC.",
+  "filename": "Phone.tsx",
+  "config": [
+    {
+      "name": "clock_format",
+      "label": "Clock",
+      "description": "The format of the clock",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "24h",
+          "label": "24 Hours"
+        },
+        {
+          "value": "12h",
+          "label": "12 Hours"
+        }
+      ],
+      "defaultValue": "24h"
+    },
+    {
+      "name": "wallpaper",
+      "label": "Wallpaper",
+      "description": "The background of the screen",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "sunset",
+          "label": "Sunset"
+        },
+        {
+          "value": "dusk",
+          "label": "Dusk"
+        },
+        {
+          "value": "night",
+          "label": "Night"
+        }
+      ],
+      "defaultValue": "sunset"
+    },
+    {
+      "name": "font",
+      "label": "Font",
+      "description": "The font of the texts. Defaults to Bahnschrift, which ships with Windows",
+      "type": "font"
+    },
+    {
+      "name": "app_1_icon",
+      "label": "Icon",
+      "description": "The icon of the app. None hides it",
+      "type": "select",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "web",
+          "label": "Internet"
+        },
+        {
+          "value": "chat",
+          "label": "Messages"
+        },
+        {
+          "value": "mail",
+          "label": "Mail"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "value": "map",
+          "label": "Map"
+        },
+        {
+          "value": "lock",
+          "label": "Lock"
+        },
+        {
+          "value": "power",
+          "label": "Power"
+        }
+      ],
+      "defaultValue": "web"
+    },
+    {
+      "name": "app_1_label",
+      "label": "Label",
+      "description": "The name below the icon",
+      "type": "string",
+      "defaultValue": "Internet",
+      "hideIf": {
+        "field": "app_1_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_1_action",
+      "label": "Action",
+      "description": "The action that runs when the app is tapped",
+      "type": "action",
+      "hideIf": {
+        "field": "app_1_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_2_icon",
+      "label": "Icon",
+      "description": "The icon of the app. None hides it",
+      "type": "select",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "web",
+          "label": "Internet"
+        },
+        {
+          "value": "chat",
+          "label": "Messages"
+        },
+        {
+          "value": "mail",
+          "label": "Mail"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "value": "map",
+          "label": "Map"
+        },
+        {
+          "value": "lock",
+          "label": "Lock"
+        },
+        {
+          "value": "power",
+          "label": "Power"
+        }
+      ],
+      "defaultValue": "chat"
+    },
+    {
+      "name": "app_2_label",
+      "label": "Label",
+      "description": "The name below the icon",
+      "type": "string",
+      "defaultValue": "Messages",
+      "hideIf": {
+        "field": "app_2_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_2_action",
+      "label": "Action",
+      "description": "The action that runs when the app is tapped",
+      "type": "action",
+      "hideIf": {
+        "field": "app_2_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_3_icon",
+      "label": "Icon",
+      "description": "The icon of the app. None hides it",
+      "type": "select",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "web",
+          "label": "Internet"
+        },
+        {
+          "value": "chat",
+          "label": "Messages"
+        },
+        {
+          "value": "mail",
+          "label": "Mail"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "value": "map",
+          "label": "Map"
+        },
+        {
+          "value": "lock",
+          "label": "Lock"
+        },
+        {
+          "value": "power",
+          "label": "Power"
+        }
+      ],
+      "defaultValue": "music"
+    },
+    {
+      "name": "app_3_label",
+      "label": "Label",
+      "description": "The name below the icon",
+      "type": "string",
+      "defaultValue": "Music",
+      "hideIf": {
+        "field": "app_3_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_3_action",
+      "label": "Action",
+      "description": "The action that runs when the app is tapped",
+      "type": "action",
+      "hideIf": {
+        "field": "app_3_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_4_icon",
+      "label": "Icon",
+      "description": "The icon of the app. None hides it",
+      "type": "select",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "web",
+          "label": "Internet"
+        },
+        {
+          "value": "chat",
+          "label": "Messages"
+        },
+        {
+          "value": "mail",
+          "label": "Mail"
+        },
+        {
+          "value": "music",
+          "label": "Music"
+        },
+        {
+          "value": "play",
+          "label": "Play"
+        },
+        {
+          "value": "map",
+          "label": "Map"
+        },
+        {
+          "value": "lock",
+          "label": "Lock"
+        },
+        {
+          "value": "power",
+          "label": "Power"
+        }
+      ],
+      "defaultValue": "lock"
+    },
+    {
+      "name": "app_4_label",
+      "label": "Label",
+      "description": "The name below the icon",
+      "type": "string",
+      "defaultValue": "Lock",
+      "hideIf": {
+        "field": "app_4_icon",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "app_4_action",
+      "label": "Action",
+      "description": "The action that runs when the app is tapped",
+      "type": "action",
+      "hideIf": {
+        "field": "app_4_icon",
+        "equals": "none"
+      }
+    }
+  ],
+  "layout": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "column",
+          "children": ["clock_format"]
+        },
+        {
+          "type": "column",
+          "children": ["wallpaper"]
+        }
+      ]
+    },
+    "font",
+    {
+      "type": "fieldset",
+      "label": "Apps",
+      "collapsible": true,
+      "children": [
+        {
+          "type": "tabs",
+          "children": [
+            {
+              "type": "tab",
+              "label": "App 1",
+              "children": ["app_1_icon", "app_1_label", "app_1_action"]
+            },
+            {
+              "type": "tab",
+              "label": "App 2",
+              "children": ["app_2_icon", "app_2_label", "app_2_action"]
+            },
+            {
+              "type": "tab",
+              "label": "App 3",
+              "children": ["app_3_icon", "app_3_label", "app_3_action"]
+            },
+            {
+              "type": "tab",
+              "label": "App 4",
+              "children": ["app_4_icon", "app_4_label", "app_4_action"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

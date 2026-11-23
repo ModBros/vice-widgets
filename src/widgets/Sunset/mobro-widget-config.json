@@ -1,0 +1,75 @@
+{
+  "name": "sunset",
+  "displayName": "Sunset",
+  "description": "A background of the Leonida coast: a striped neon sun over the sea, a city skyline on the horizon and palm tree silhouettes. Place it behind the other widgets.",
+  "filename": "Sunset.tsx",
+  "config": [
+    {
+      "name": "scene",
+      "label": "Time of Day",
+      "description": "The colors of the sky and the sea",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "sunset",
+          "label": "Sunset"
+        },
+        {
+          "value": "dusk",
+          "label": "Dusk"
+        },
+        {
+          "value": "night",
+          "label": "Night"
+        }
+      ],
+      "defaultValue": "sunset"
+    },
+    {
+      "name": "horizon",
+      "label": "Horizon (%)",
+      "description": "The height of the horizon as a percentage of the widget height, measured from the top",
+      "type": "slider",
+      "defaultValue": 68,
+      "min": 20,
+      "max": 95
+    },
+    {
+      "name": "hide_sun",
+      "label": "Hide Sun",
+      "description": "Hides the sun and its reflection on the water",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_shimmer",
+      "label": "Still Water",
+      "description": "Keeps the reflection of the sun from shimmering",
+      "type": "checkbox",
+      "hideIf": {
+        "field": "hide_sun"
+      }
+    },
+    {
+      "name": "hide_skyline",
+      "label": "Hide Skyline",
+      "description": "Hides the city on the horizon",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_palms",
+      "label": "Hide Palm Trees",
+      "description": "Hides the palm trees in the corners",
+      "type": "checkbox"
+    }
+  ],
+  "layout": [
+    "scene",
+    "horizon",
+    {
+      "type": "fieldset",
+      "label": "Elements",
+      "collapsible": true,
+      "children": ["hide_sun", "hide_shimmer", "hide_skyline", "hide_palms"]
+    }
+  ]
+}

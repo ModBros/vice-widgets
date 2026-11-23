@@ -1,0 +1,201 @@
+{
+  "name": "stat_bar",
+  "displayName": "Stat Bar",
+  "description": "A skill bar of the stats screen: a label and a value above a row of segments that fill up. Flashes red above the alert threshold.",
+  "filename": "StatBar.tsx",
+  "config": [
+    {
+      "name": "metric",
+      "label": "Metric",
+      "description": "The metric that fills the bar",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "segments",
+      "label": "Segments",
+      "description": "The number of segments of the bar",
+      "type": "slider",
+      "defaultValue": 5,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "name": "label",
+      "label": "Label",
+      "description": "The text above the bar, e.g. Stamina. Defaults to the metric name",
+      "type": "string",
+      "hideIf": {
+        "field": "hide_label"
+      }
+    },
+    {
+      "name": "hide_label",
+      "label": "Hide Label",
+      "description": "Hides the text above the bar",
+      "type": "checkbox"
+    },
+    {
+      "name": "value_display",
+      "label": "Value",
+      "description": "The text above the right end of the bar: the value like 45 °C, the value and the max value like 90/120, the percentage of the max value, or nothing",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "value",
+          "label": "Value"
+        },
+        {
+          "value": "max",
+          "label": "Value / Max"
+        },
+        {
+          "value": "percent",
+          "label": "Percent"
+        },
+        {
+          "value": "none",
+          "label": "Hidden"
+        }
+      ],
+      "defaultValue": "value"
+    },
+    {
+      "name": "precision",
+      "label": "Precision",
+      "description": "The number of decimal places. If not set, values of 100 and more have none, smaller values one or two",
+      "type": "number",
+      "min": 0,
+      "max": 10,
+      "hideIf": {
+        "field": "value_display",
+        "equals": "none"
+      }
+    },
+    {
+      "name": "min",
+      "label": "Min Value",
+      "description": "The value of an empty bar. Defaults to 0",
+      "type": "number"
+    },
+    {
+      "name": "max",
+      "label": "Max Value",
+      "description": "The value of a full bar. If not set, percentages and °C use 100 and other metrics their highest recorded value",
+      "type": "number"
+    },
+    {
+      "name": "font",
+      "label": "Font",
+      "description": "The font of the texts. Defaults to Bahnschrift, which ships with Windows",
+      "type": "font"
+    },
+    {
+      "name": "font_size",
+      "label": "Font Size",
+      "description": "The font size in pixels. If not set, it follows the height of the widget",
+      "type": "number",
+      "min": 1
+    },
+    {
+      "name": "color",
+      "label": "Color",
+      "description": "The color of the texts and the filled segments. Defaults to white",
+      "type": "color"
+    },
+    {
+      "name": "empty_color",
+      "label": "Empty Color",
+      "description": "The color of the empty segments",
+      "type": "color"
+    },
+    {
+      "name": "alert_threshold",
+      "label": "Threshold (%)",
+      "description": "Percentage of the max value from which the bar flashes. 0 turns it off. Only percentages, °C and metrics with a max value raise the alert",
+      "type": "slider",
+      "defaultValue": 90,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "name": "alert_color",
+      "label": "Alert Color",
+      "description": "The color of the bar above the threshold. Defaults to red",
+      "type": "color"
+    }
+  ],
+  "layout": [
+    "metric",
+    "segments",
+    {
+      "type": "fieldset",
+      "label": "Label & Value",
+      "collapsible": true,
+      "children": [
+        "label",
+        "hide_label",
+        "value_display",
+        "precision",
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "children": ["min"]
+            },
+            {
+              "type": "column",
+              "children": ["max"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "label": "Text & Colors",
+      "collapsible": true,
+      "collapsed": true,
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["font"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["font_size"]
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "children": ["color"]
+            },
+            {
+              "type": "column",
+              "children": ["empty_color"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "label": "Alert",
+      "collapsible": true,
+      "collapsed": true,
+      "children": ["alert_threshold", "alert_color"]
+    }
+  ]
+}

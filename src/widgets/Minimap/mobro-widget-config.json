@@ -1,0 +1,180 @@
+{
+  "name": "minimap",
+  "displayName": "Minimap",
+  "description": "The radar of the HUD: a slowly turning city map with a GPS route, blips and the player arrow, and up to three bars below it like health, armor and special ability. A bar flashes red above the alert threshold.",
+  "filename": "Minimap.tsx",
+  "config": [
+    {
+      "name": "shape",
+      "label": "Shape",
+      "description": "A rounded rectangle that fills the widget, or a circle",
+      "type": "button-group",
+      "options": [
+        {
+          "value": "square",
+          "label": "Rectangle"
+        },
+        {
+          "value": "round",
+          "label": "Circle"
+        }
+      ],
+      "defaultValue": "square"
+    },
+    {
+      "name": "rotation_speed",
+      "label": "Rotation Speed",
+      "description": "How fast the map turns, in degrees per second. 0 keeps it still",
+      "type": "slider",
+      "defaultValue": 3,
+      "min": 0,
+      "max": 30
+    },
+    {
+      "name": "hide_route",
+      "label": "Hide GPS Route",
+      "description": "Hides the route to the waypoint",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_blips",
+      "label": "Hide Blips",
+      "description": "Hides the colored dots on the map",
+      "type": "checkbox"
+    },
+    {
+      "name": "health_metric",
+      "label": "Health",
+      "description": "The metric of the first bar, e.g. CPU utilization",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "health_color",
+      "label": "Color",
+      "description": "The color of the first bar. Defaults to green",
+      "type": "color"
+    },
+    {
+      "name": "armor_metric",
+      "label": "Armor",
+      "description": "The metric of the second bar, e.g. GPU utilization",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "armor_color",
+      "label": "Color",
+      "description": "The color of the second bar. Defaults to blue",
+      "type": "color"
+    },
+    {
+      "name": "special_metric",
+      "label": "Special",
+      "description": "The metric of the third bar, e.g. memory utilization",
+      "type": "metric",
+      "filters": {
+        "valueTypes": ["Numeric", "Duration", "Currency"]
+      }
+    },
+    {
+      "name": "special_color",
+      "label": "Color",
+      "description": "The color of the third bar. Defaults to yellow",
+      "type": "color"
+    },
+    {
+      "name": "bar_height",
+      "label": "Bar Height (%)",
+      "description": "The height of the bars as a percentage of the widget height",
+      "type": "slider",
+      "defaultValue": 6,
+      "min": 1,
+      "max": 30
+    },
+    {
+      "name": "alert_threshold",
+      "label": "Alert Threshold (%)",
+      "description": "Percentage of the max value from which a bar flashes red. 0 turns it off. Only percentages, °C and metrics with a known max value raise the alert",
+      "type": "slider",
+      "defaultValue": 90,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "layout": [
+    "shape",
+    "rotation_speed",
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "column",
+          "children": ["hide_route"]
+        },
+        {
+          "type": "column",
+          "children": ["hide_blips"]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "label": "Bars",
+      "collapsible": true,
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["health_metric"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["health_color"]
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["armor_metric"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["armor_color"]
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "column",
+              "span": "8 s-12",
+              "children": ["special_metric"]
+            },
+            {
+              "type": "column",
+              "span": "4 s-12",
+              "children": ["special_color"]
+            }
+          ]
+        },
+        "bar_height",
+        "alert_threshold"
+      ]
+    }
+  ]
+}
