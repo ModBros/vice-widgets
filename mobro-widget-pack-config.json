@@ -2,5 +2,7 @@
   "name": "modbros_vice",
   "displayName": "Vice",
   "description": "Neon sunset widgets inspired by the HUD of Grand Theft Auto VI. A Leonida sunset background, a turning minimap with health and armor bars, wanted stars, a counting cash display, stock market tickers, skill stat bars, mission passed and wasted banners, and a phone whose apps run actions.",
-  "author": "ModBros"
+  "author": "ModBros",
+  "tags": ["gaming", "hud", "neon", "gta", "grand theft auto", "leonida"],
+  "repositoryUrl": "https://github.com/ModBros/vice-widgets"
 }
